@@ -1,30 +1,52 @@
 import socket
 import time
+from appJar import gui
 
-host = "127.0.0.1"
-port = 5000
+app = gui()
+app.setFont(10)
+app.addLabel('title2', 'Server')
+app.setLabelBg('title2', 'blue')
 
-clients = []
+def mainpc():
+    green = '\033[92m'
+    host = "127.0.0.1"
+    port = 5000
 
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.bind((host, port))
-s.setblocking(0)
+    clients = []
 
-quitting = False
-print "Server ON !!"
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.bind((host, port))
+    s.setblocking(0)
+    quitting = False
 
-while not quitting:
-    try:
-        data, addr = s.recvfrom(1024)
-        if "Quit" in str(data):
-               quitting = True
-        if addr not in clients:
-                clients.append(addr)
+    app.addLabel('label', 'Connected')
+    
+    
+    
+    while not quitting:
+        try:
+            data, addr = s.recvfrom(1024)
+            if "Quit" in str(data):
+                   quitting = True
+            if addr not in clients:
+                    clients.append(addr)
 
-        print time.ctime(time.time()) + str(addr) + ": :"  + str(data)
-        for client in clients:
-             s.sendto(data, client)
+            app.addListItem('list', (str(data)))
+            for client in clients:
+                 s.sendto(data, client)
+                 
+        except:
+            
+            pass
+    s.close()
 
-    except:
-        pass
-s.close()
+def press(button):
+    if button == "Cancel":       
+        mainpc()
+    else:
+        app.stop()
+
+app.addListBox('list', [''])
+app.addButtons(["Cancel","OK"], press, )
+app.go()
+
