@@ -2,7 +2,7 @@ import socket
 import threading
 import time
 from appJar import gui
-
+import sys
 
 app = gui()
 app.setGeometry('250','400')
@@ -24,7 +24,11 @@ def send(button):
         message =(app.getEntry('Name') + ':' + app.getEntry('e1')  )
         s.sendto(message, server)
         app.clearEntry('e1')
-        
+       
+def sende(enter):
+    message =(app.getEntry('Name') + ':' + app.getEntry('e1') )
+    s.sendto(message, server)
+    app.clearEntry('e1')
         
 app.addButton('Send',send)
 app.addLabelEntry('Name')
@@ -33,18 +37,19 @@ app.get
 
 downloadCount = 0
 green = '\033[92m'
+
 def downloader():
     global downloadCount
-    for i in range(20020):
+    while True:
+
         daa = s.recv(20)
         app.addListItem('list', daa)
         app.setListItemFg('list','daa','green')
-        app.addListItem('list', "")
         time.sleep(1)
 
 app.thread(downloader)
 
 
-
+app.enableEnter(sende)
 
 app.go()

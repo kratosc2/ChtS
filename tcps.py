@@ -30,8 +30,7 @@ def mainpc():
                    quitting = True
             if addr not in clients:
                     clients.append(addr)
-
-            app.addListItem('list', (str(data)))
+                                        
             for client in clients:
                  s.sendto(data, client)
                  
@@ -41,12 +40,13 @@ def mainpc():
     s.close()
 
 def press(button):
-    if button == "Cancel":       
+    if button == "Start Server":       
         mainpc()
     else:
         app.stop()
 
 app.addListBox('list', [''])
-app.addButtons(["Cancel","OK"], press, )
+app.addButton('Start Server', press )
+
 app.go()
 
