@@ -1,8 +1,12 @@
 # PYTHON CLIENT SERVER TCP MESSAGING SYSTEM WİTH GUI 
 
-Install "appJAr" for gui
+Install "appJAr" for gui:
 
-$ pip install appJar 
+```sh
+
+```
+
+
 
 Server py file 
 
