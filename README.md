@@ -8,7 +8,7 @@ $ pip install appJar
 
 
 
-Server py file 
+Server file 
 ```sh
 
 $ python tcps.py
