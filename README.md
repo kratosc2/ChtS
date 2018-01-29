@@ -13,7 +13,7 @@ Server file
 
 $ python tcps.py
 
-Press "Start server"
+Press "Start server" and open new terminal
 ```
 Then open clients...
 ```sh
