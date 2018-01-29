@@ -1,15 +1,15 @@
 # PYTHON CLIENT SERVER TCP MESSAGING SYSTEM WİTH GUI 
 
-# FIRST INSTALL APPJAR
+Install "appJAr" for gui
 
 $ pip install appJar 
 
-# First 
+Server py file 
 
 $ python tcps.py
 
-#Press "Start server"
+Press "Start server"
 
-# Then open clients...
+Then open clients...
 
 $ python tcpc.py
