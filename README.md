@@ -3,7 +3,7 @@
 Install "appJAr" for gui:
 
 ```sh
-
+$ pip install appJar 
 ```
 
 
